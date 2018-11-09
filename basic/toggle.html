@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+
+	<style type="text/css">
+		.green {
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<button id="button">Click Me</button>
+
+
+	<script type="text/javascript">
+		var button = document.querySelector("#button");
+		button.addEventListener("click", function() {
+			document.body.classList.toggle("green");
+		});
+	</script>
+</body>
+</html>
