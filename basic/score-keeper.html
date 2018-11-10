@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Score Keeper</title>
+
+	<style type="text/css">
+	.green {
+		color: green;
+	}
+</style>
+</head>
+<body>
+	<h1><span id="lefth1">0</span> to <span id="righth1">0</span></h1>
+	<p>Playing to: <span id="playnumber">7</span></p>
+	<select id="customnumber">
+		<option></option>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+	</select>
+	<button id="playeronebtn">Player One</button>
+	<button id="playertwobtn">Player Two</button>
+	<button id="resetbtn">Reset</button>
+
+	<script type="text/javascript">
+		var leftpoint = document.getElementById("lefth1");
+		var rightpoint = document.getElementById("righth1");
+		var playnumber = document.getElementById(("playnumber"));
+		var playeronebtn = document.querySelector("#playeronebtn");
+		var playertwobtn = document.querySelector("#playertwobtn");
+		var resetbtn = document.querySelector("#resetbtn");
+		var customnumber = document.getElementById("customnumber");
+		customnumber.addEventListener("change", function(){
+			if (customnumber.value) {
+				playnumber.innerText = customnumber.value;
+				reset();
+		}
+	});
+		playeronebtn.addEventListener("click", function(){
+			if ((parseInt(leftpoint.innerText) < parseInt(playnumber.innerText)) && 
+				(parseInt(rightpoint.innerText) < parseInt(playnumber.innerText))) {
+				leftpoint.innerHTML = parseInt(leftpoint.innerText) + 1;
+		}
+		if (parseInt(leftpoint.innerText) == parseInt(playnumber.innerText)) {
+			leftpoint.classList.add("green");
+		}			
+	});
+		playertwobtn.addEventListener("click", function(){
+			if ((parseInt(rightpoint.innerText) < parseInt(playnumber.innerText)) &&
+				(parseInt(leftpoint.innerText) < parseInt(playnumber.innerText))) {
+				rightpoint.innerHTML = parseInt(rightpoint.innerText) + 1;
+		} 
+		if (parseInt(rightpoint.innerText) == parseInt(playnumber.innerText)) {
+			rightpoint.classList.add("green");
+		}
+	});
+		function reset() {
+			leftpoint.innerText = 0;
+			rightpoint.innerText = 0;
+			leftpoint.classList.remove("green");
+			rightpoint.classList.remove("green");
+		}
+		resetbtn.addEventListener("click", function(){
+			reset();
+		});
+	</script>
+</body>
+</html>
